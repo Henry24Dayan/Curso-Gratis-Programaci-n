@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcula tu peso en otro Planeta</title>
+
+    <style>
+        h1{
+                color: rgb(9, 67, 48);
+                text-align: center;    
+        }
+        p{
+            color: azure;
+            text-decoration:solid;
+            text-align: center;
+            
+
+
+        }
+        body{
+
+            background-color: darkcyan;
+        }
+
+    </style>
+
+
+</head>
+
+
+<body>
+    <h1>Tu Peso En Otro Planeta</h1>     
+    <p>En este sitio web podras saber cúal es tu peso exacto en Marte, Jupiter</p>
+    
+    <h2></h2>
+
+    <script>
+            var g_tierra = 9.8;         //Definiendo variables
+            var g_marte =3.7;           //
+            var g_jupiter = 24.8;       //
+            var peso = 77;              //
+            var PesoFinal;              // Definimos varible sin asignar valor. 
+
+            PesoFinal = peso * g_marte/g_tierra; 
+            PesoFinal = parseInt(PesoFinal);                      //ParseInt le quita los decimales y deja un número entero. 
+
+            document.write("Tu peso en marte es: " + PesoFinal);  // Documen.write pone el texto en el body.
+
+
+    </script>
+</body>
+</html>
