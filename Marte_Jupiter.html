@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcula tu peso en otro Planeta</title>
+
+    <style>
+        h1{
+                color: rgb(9, 67, 48);
+                text-align: center;    
+        }
+        p{
+            color: azure;
+            text-decoration:solid;
+            text-align: center;
+            
+
+
+        }
+        body{
+
+            background-color: darkcyan;
+        }
+        
+    </style>
+
+
+</head>
+
+
+<body>
+    <h1>Tu Peso En Otro Planeta</h1>     
+    <p>En este sitio web podras saber cúal es tu peso exacto en Marte, Jupiter</p>
+    
+    <h2></h2>
+
+    <script>
+            
+
+            var usuario = prompt("¿Cúal es  tu peso actual?")  //Prompt crea un imput y definimos que el dato ingresado se almacene en la variable usuario
+            var Planeta = parseInt(prompt("¿Calcular peso en marte o Júpiter? \n Escribe 1 para Marte o escribe 2 para Júpiter: ")) //Pedimos en que planeta quiere realizar el calculo \n es un salto de linea
+
+
+
+
+            var g_tierra = 9.8;         //Definiendo variables
+            var g_marte =3.7;           //
+            var g_jupiter = 24.8;       //
+            var peso = parseInt(usuario);              // Lo almaceno en la variable Peso como un entero
+            var PesoFinal;              // Definimos varible sin asignar valor. 
+
+                if(Planeta==1)
+                {
+
+                    PesoFinal = peso * g_marte/g_tierra;                   //Operación lógica
+
+                } else if(Planeta==2)                   // Else if  Define la operacicón exacta, debe ser igual a 2 para que se ejecute
+                {
+
+                    PesoFinal = peso * g_jupiter/g_tierra;
+                }
+
+                if(Planeta==1)
+                {
+                    PesoFinal = parseInt(PesoFinal);                      //ParseInt le quita los decimales y deja un número entero. 
+
+                    document.write("Tu peso en marte es: " + PesoFinal + " Kilos");  // Documen.write pone el texto en el body.
+
+                } else if(Planeta==2)
+                {
+                    PesoFinal = parseInt(PesoFinal);                      //ParseInt le quita los decimales y deja un número entero. 
+
+                    document.write("Tu peso en Júpiter es: " + PesoFinal + " Kilos");  // Documen.write pone el texto en el body.
+    
+
+                }else                                                       //Sino se cumplen las dos condiciones anteriores se ejecuta este else
+                {
+                    document.write("No te hagas el listo.")
+                }
+            
+
+           
+            
+
+    </script>
+</body>
+</html>
