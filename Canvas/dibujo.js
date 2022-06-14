@@ -1,11 +1,19 @@
 var d = document.getElementById("Dibujito") ;  //En javascript  getEllementByiD   es el  método de document. que nos trae  una de las ramas de html
 var lienzo = d.getContext("2d");               //Definimos si es en 2D o 3D el contexto; getContext es una funcion de canvas que me permite obtener el área donde voy a diibujar.
 
+dibujarlinea("Green", 10,250 , 220 , 10)  //Invocamos la función para que se ejecute.
+dibujarlinea("Green", 10,150 , 120 , 40)  //Aca por segunda vez.
 
-lienzo.beginPath();          //Definimos la funcion del canvas para inicicar a dibujar.
-lienzo.strokeStyle = "red" ; // Varible o atributo por ende se comporta como variable y se signa valor.
-lienzo.moveTo(100,100)       //Método del canvas para mover el lapiz donde va arrancar la linea
-lienzo.lineTo(200,200)       //Creamos la linea, Metodo o funcion del canvas para trazar linea hasta donde se especifica (Aunque pude ser gran variedad de formas y figuras)
-lienzo.stroke();             // Dibuja la línea  y la cierra.
-lienzo.closePath();          //Método para finalizar el dibujo. Cerrar el trazo  (Levantar el lapiz)
+function dibujarlinea(color, xinicial, yinicial, xfinal, yfinal)  //Declaramos las variables como si pusieramos un var; Se declara cada vez que la función es invocada.
+
+{
+//Debemos cambiar los valores fijos por los valores variables que vienen del parámetro//
+lienzo.beginPath();                 //Definimos la funcion del canvas para inicicar a dibujar.
+lienzo.strokeStyle = color ;        // Asignamos el valor que recibe por parámetro.
+lienzo.moveTo(xinicial,xfinal)      // Asignamos al función el valor que recibe por parámetro.
+lienzo.lineTo(yinicial,  yfinal)    //Asignamos el valor que recibe por parámetro.
+lienzo.stroke();                    //Dibuja la línea.
+lienzo.closePath();                 //Método para finalizar el dibujo. Cerrar el trazo  (Levantar el lapiz)
+
+}
 
