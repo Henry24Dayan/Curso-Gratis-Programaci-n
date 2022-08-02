@@ -29,6 +29,9 @@ switch(evento.keyCode)               // Estructura de control
     case teclas.RIGHT:
         console.log("Derecha")
     break;
+    default :                       // Es como lo que se ejecuta sino se cumople con ninguna de las variables en el switch.
+    console.log("Otra tecla")
+    break;
 }
 
 }
