@@ -9,7 +9,7 @@
 }
 
 
-document.addEventListener("keyup", dibujarTeclado)
+document.addEventListener("keyup", dibujarTeclado) //Key Up es la funcion del Listener y el lanzador que ejecuta la funcion
 
 function dibujarTeclado(evento)  //Definimos la funcion y ponemos el parametro que almacenara todos los eventos
 
