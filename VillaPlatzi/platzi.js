@@ -1,44 +1,118 @@
 var vp = document.getElementById("villaplatzi"); // Definimos variable para traer el canvas del html
-var papel = vp.getContext("2d");                 // Le damos el contecto 2d en este caso   
-var mapa = "tile.png";                           // Definimos variable donde almacenamos la imagen del mapa, que esta en la misma carpeta   
+var papel = vp.getContext("2d");                 // Le damos el contexto 2d en este caso   
 
-var fondo = new Image();                        // tenemos que crear un objeto nuevo e insertarla al canvas , definicion completas de un objeto
-fondo.src = mapa;                               // al agregar el src se dispara un evento de carga   
-fondo.addEventListener("load", dibujar);        // Agregamos el evento listener el cual nos permitira en el evento de carga subir la imagen (dibujar la imagen)
 
-var vaca = new Image();                         // Agregamos la imagen con el objeto Image   
-vaca.src = "vaca.png";                  
-vaca.addEventListener("load" , dibujarVacas);   // Agregamos el evento listener el cual nos permitira en el evento de carga subir la imagen (dibujar la imagen)
+var fondo = {                                   // Objeto literal
 
-var pollo = new Image(); 
-pollo.src = "pollo.png";
-pollo.addEventListener("load" , dibujarPollos);
- 
-var cerdo = new Image();
-cerdo.src = "cerdo.png";
-cerdo.addEventListener("load" , dibujarCerdos);
+    url: "tile.png",                            // Direccion  del directorio de la imagen
+    cargaOK: false                              // Check
+
+};
+
+
+var vaca = {
+
+    url: "vaca.png",                            //Direccion  del directorio de la imagen
+    cargaOK: false                              
+
+};
+
+var pollo = {
+
+    url: "pollo.png",                            //Direccion  del directorio de la imagen
+    cargaOK: false                              
+
+};
+var cerdo = {
+
+    url: "cerdo.png",                            //Direccion  del directorio de la imagen
+    cargaOK: false                              
+
+};
+
+fondo.imagen = new Image();                         // Agregamos atributo o variable  al OBJETO LITERAL y le almacenamos la clase Image a ese variable (imagen)
+fondo.imagen.src = fondo.url;                               // al agregar el src se dispara un evento de carga   
+fondo.imagen.addEventListener("load", cargarFondo);        // Esta funcion nos permitira definir cuando esta lista la carga y llamamos a la funcion de carga
+
+vaca.imagen = new Image();                          // Agregamos atributo o variable  al OBJETO LITERAL y le almacenamos la clase Image a ese variable (imagen)
+vaca.imagen.src = vaca.url;                         // Definimos ruta usando una instancia del objeto imagen = Image
+vaca.imagen.addEventListener("load" , cargarVacas); // Esta funcion nos permitira definir cuando esta lista la carga y llamamos a la funcion de carga
+
+pollo.imagen = new Image();                          // Agregamos atributo o variable  al OBJETO LITERAL y le almacenamos la clase Image a ese variable (imagen)
+pollo.imagen.src = pollo.url;                         // Definimos ruta usando una instancia del objeto imagen = Image
+pollo.imagen.addEventListener("load" , cargarPollos); // Esta funcion nos permitira definir cuando esta lista la carga y llamamos a la funcion de carga
+
+cerdo.imagen = new Image();                          // Agregamos atributo o variable  al OBJETO LITERAL y le almacenamos la clase Image a ese variable (imagen)
+cerdo.imagen.src = cerdo.url;                         // Definimos ruta usando una instancia del objeto imagen = Image
+cerdo.imagen.addEventListener("load" , cargarCerdos); // Esta funcion nos permitira definir cuando esta lista la carga y llamamos a la funcion de carga
+
+function cargarFondo()          
+{
+    fondo.cargaOK = true;  //creamos la señal que el fondo est'a Ok. - Solo se dibujara cuando est'a cargado.
+    dibujar();
+} 
+
+function cargarVacas()
+{
+    vaca.cargaOK = true;
+    dibujar();
+}
+function cargarPollos()
+{
+    pollo.cargaOK = true;
+    dibujar();
+}
+
+function cargarCerdos()
+{
+    cerdo.cargaOK = true;
+    dibujar();
+}
 
 function dibujar()                               //Definimos la funcion que traera la imagen y la pondra en el canvas
 {
-    papel.drawImage(fondo, 0, 0)                 //Donde papel es el canvas y traemos una funcion de Image que trae la foto de 500x500 y 0,0 donde inicia   
+    if(fondo.cargaOK == true)
+    {
+        papel.drawImage(fondo.imagen, 0, 0)                 //Donde papel es el canvas y traemos una funcion de Image que trae la foto de 500x500 y 0,0 donde inicia      
 
+    } 
+    if(vaca.cargaOK == true)
+    {
+        for( var v=0; v<5; v++)                                   //Super poder for para dibujar mas vacas.
+        
+        {
+            var x = aleatorio(0,420);                           //Definimos variable para ejecutar la funcion aleatorio y le mandamos los parametros o rangos.
+            var y = aleatorio(0,420);
+            papel.drawImage(vaca.imagen, x, y)                 //Donde papel es el canvas y traemos una funcion de Image que trae la foto de 500x500 y 0,0 donde inicia      
+        }
+        
+    }
+    if(pollo.cargaOK == true)
+    {
+        for( var p=0; p<5; p++)                                   //Super poder for para dibujar mas vacas.
+        
+        {
+            var x = aleatorio(0,420);                           //Definimos variable para ejecutar la funcion aleatorio y le mandamos los parametros o rangos.
+            var y = aleatorio(0,420);
+            papel.drawImage(pollo.imagen, x, y)                 //Donde papel es el canvas y traemos una funcion de Image que trae la foto de 500x500 y 0,0 donde inicia      
+        }
+        
+    }
+    if(cerdo.cargaOK)                                              // Si es falso no se ejecuta al if solo le importa lo que recibe
+    {
+        for( var c=0; c<8; c++)                                   //Super poder for para dibujar mas vacas.
+        
+        {
+            var x = aleatorio(0,420);                           //Definimos variable para ejecutar la funcion aleatorio y le mandamos los parametros o rangos.
+            var y = aleatorio(0,420);
+            papel.drawImage(cerdo.imagen, x, y)                 //Donde papel es el canvas y traemos una funcion de Image que trae la foto de 500x500 y 0,0 donde inicia      
+        }
+        
+    }
+
+    
 }
 
-function dibujarVacas()                               //Definimos la funcion que traera la imagen y la pondra en el canvas
-{
-    papel.drawImage(vaca, 10, 10)                 //Donde papel es el canvas y traemos una funcion de Image que trae la foto de 500x500 y 0,0 donde inicia   
-
-}
-function dibujarCerdos()                               //Definimos la funcion que traera la imagen y la pondra en el canvas
-{
-    papel.drawImage(cerdo, 10, 300)                 //Donde papel es el canvas y traemos una funcion de Image que trae la foto de 500x500 y 0,0 donde inicia   
-
-}
-function dibujarPollos()                               //Definimos la funcion que traera la imagen y la pondra en el canvas
-{
-    papel.drawImage(pollo, 300, 150)                 //Donde papel es el canvas y traemos una funcion de Image que trae la foto de 500x500 y 0,0 donde inicia   
-
-}
 
 var z = aleatorio (10, 20);
 document.write(z);
